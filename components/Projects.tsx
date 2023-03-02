@@ -19,8 +19,11 @@ export default function Projects({ projects }: Props) {
         Projets
       </h3>
       <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20  scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#61DBFB]/50">
-        {projects.map((project, i) => (
-          <div className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20">
+        {projects?.map((project, i) => (
+          <div
+            key={project?._id}
+            className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20"
+          >
             <motion.img
               initial={{
                 y: -300,
@@ -31,32 +34,30 @@ export default function Projects({ projects }: Props) {
               viewport={{ once: true }}
               src={urlFor(project?.image).url()}
               alt="project image"
+              className="w-60"
             />
             {/* bug ici l'image n'apparaît pas */}
             <div className="space-y-10 px-0 md:px-10 max-w-6xl">
-              <h4 className="text-4xl font-semibold text-center">
-                <span className="underline decoration-[#61DBFB]/50">
-                  Noms de projet {i + 1} / {projects.length} :
-                </span>
-
+              <h4 className="text-4xl font-semibold text-center underline decoration-[#61DBFB]/80">
+                <span>
+                  Noms de projet {i + 1} / {projects?.length} :
+                </span>{" "}
                 {project?.title}
               </h4>
-              {project?.technologies.map((technology) => (
-                <div className="flex items-center space-x-2 justify-center">
+              <div className="flex  flex-row items-center space-x-2 justify-center p-6 gap-4">
+                {project?.technologies.map((technology) => (
                   <Image
                     width={300}
                     height={300}
-                    className="h-10 w-10"
-                    key={technology._id}
-                    src={urlFor(technology.image).url()}
+                    className="h-10 w-10 object-contain"
+                    key={technology?._id}
+                    src={urlFor(technology?.image).url()}
                     alt="technology used"
                   />
-                </div>
-              ))}
+                ))}
+              </div>
 
-              <p className="text-lg text-center md:text-left">
-                {project?.summary}
-              </p>
+              <p className="text-xl text-center ">{project?.summary}</p>
             </div>
           </div>
         ))}

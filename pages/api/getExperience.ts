@@ -3,7 +3,19 @@ import { groq } from "next-sanity";
 import { sanityClient } from "../../sanity";
 import { Experience } from "../../typings";
 
-const query = groq`*[_type == "experience"]`;
+const query = groq`*[_type == "experience"]{
+jobTitle,
+companyImage,
+company,
+dateStarted,
+dateEnded,
+isCurrentlyWorkingHere,
+technologies[]->{
+  title,
+  image,
+},
+points,
+}`;
 
 type Data = {
   experiences: Experience;
