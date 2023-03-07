@@ -40,7 +40,7 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
       <section id="skills" className="snap-start">
         <Skills skills={skills} />
       </section>
-      <section id="projects" className="snap-start">
+      <section id="projects" className="snap-center">
         <Projects projects={projects} />
       </section>
       <section id="contact" className="snap-start">
@@ -72,7 +72,7 @@ points,
 
   const pageInfo = await sanityClient.fetch(pageInfoQuery);
 
-  const projectQuery = `*[_type == "project"] {
+  const projectQuery = `*[_type == "project"] | order(_createdAt asc) {
   ...,
   technologies[]->
 }`;

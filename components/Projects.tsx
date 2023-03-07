@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { Project } from "../typings";
 import { urlFor } from "../sanity";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel, Pagination } from "swiper";
+import "swiper/css/pagination";
 type Props = {
   projects: Project[];
 };
@@ -19,51 +22,61 @@ export default function Projects({ projects }: Props) {
         Projets
       </h3>
       <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20  scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#61DBFB]/50">
-        {projects?.map((project, i) => (
-          <div
-            key={project?._id}
-            className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20"
-          >
-            <motion.img
-              initial={{
-                y: -300,
-                opacity: 0,
-              }}
-              transition={{ duration: 1.2 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              src={urlFor(project?.image).url()}
-              alt="project image"
-              className="w-60"
-            />
-            {/* bug ici l'image n'apparaît pas */}
-            <div className="space-y-10 px-0 md:px-10 max-w-6xl">
-              <h4 className="text-4xl font-semibold text-center underline decoration-[#61DBFB]/80">
-                <span>
-                  Nom de projet {i + 1} / {projects?.length} :
-                </span>{" "}
-                {project?.title}
-              </h4>
-              <div className="flex  flex-row items-center space-x-2 justify-center p-6 gap-4">
-                {project?.technologies.map((technology) => (
-                  <Image
-                    width={300}
-                    height={300}
-                    className="h-10 w-10 object-contain"
-                    key={technology?._id}
-                    src={urlFor(technology?.image).url()}
-                    alt="technology used"
-                  />
-                ))}
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={60}
+          mousewheel={true}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Mousewheel, Pagination]}
+          className="mySwiper"
+        >
+          {projects?.map((project, i) => (
+            <SwiperSlide>
+              <div
+                key={project?._id}
+                className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20"
+              >
+                <img
+                  src={urlFor(project?.image).url()}
+                  alt="project image"
+                  className="w-60"
+                />
+                {/* bug ici l'image n'apparaît pas */}
+                <div className="space-y-10 px-0 md:px-10 max-w-6xl">
+                  <h4 className="text-4xl font-semibold text-center underline decoration-[#61DBFB]/80">
+                    <span>
+                      Nom de projet {i + 1} / {projects?.length} :
+                    </span>{" "}
+                    {project?.title}
+                  </h4>
+                  <div className="flex  flex-row items-center space-x-2 justify-center p-6 gap-4">
+                    {project?.technologies.map((technology) => (
+                      <Image
+                        width={300}
+                        height={300}
+                        className="h-10 w-10 object-contain"
+                        key={technology?._id}
+                        src={urlFor(technology?.image).url()}
+                        alt="technology used"
+                      />
+                    ))}
+                  </div>
+
+                  <p className="text-xl text-center ">{project?.summary}</p>
+                </div>
+                <a
+                  href={project.linkToBuild}
+                  className=" w-60 text-center text-2xl border border-t-[#61DBFB] border-x-0 border-b-0 underline decoration-[#61DBFB]/80"
+                >
+                  Visiter
+                </a>
               </div>
-
-              <p className="text-xl text-center ">{project?.summary}</p>
-            </div>
-          </div>
-        ))}
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
-
-      <div className="w-full absolute top-[30%] bg-[#61DBFB]/10 left-0 h-[500px] -skew-y-12" />
     </motion.div>
   );
 }
