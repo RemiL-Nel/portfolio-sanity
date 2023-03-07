@@ -25,7 +25,7 @@ export default function Contact({}: Props) {
       </h3>
       <div className="flex flex-col space-y-10">
         <h4 className="text-4xl font-semibold text-center">
-          I have got what you need.{" "}
+          J'ai ce qu'il vous faut
           <span className="decoration-[#61DBFB]/50 underline">Let's Talk</span>
         </h4>
         <div className="flex items-center space-x-5 justify-center">
@@ -34,7 +34,7 @@ export default function Contact({}: Props) {
         </div>
         <div className="flex items-center space-x-5 justify-center">
           <MapPinIcon className="text-[#61DBFB] h-7 w-7 animate-pulse" />
-          <p className="text-2xl">123 Developer Lane</p>
+          <p className="text-2xl">Reims</p>
         </div>
         <div className="flex items-center space-x-5 justify-center">
           <EnvelopeIcon className="text-[#61DBFB] h-7 w-7 animate-pulse" />
