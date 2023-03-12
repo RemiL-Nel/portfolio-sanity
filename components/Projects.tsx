@@ -4,7 +4,7 @@ import { Project } from "../typings";
 import { urlFor } from "../sanity";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Mousewheel, Pagination } from "swiper";
+import { Mousewheel, Navigation, Pagination } from "swiper";
 import "swiper/css/pagination";
 type Props = {
   projects: Project[];
@@ -16,32 +16,33 @@ export default function Projects({ projects }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0"
+      className="  flex overflow-hidden flex-col  max-w-full justify-evenly mx-auto items-center z-0"
     >
-      <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl ">
+      <h3 className=" top-24 uppercase tracking-[20px] text-gray-500 text-2xl ">
         Projets
       </h3>
-      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20  scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#61DBFB]/50">
+      <div className=" w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20  scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#61DBFB]/50">
         <Swiper
           slidesPerView={1}
           spaceBetween={60}
-          mousewheel={true}
+          mousewheel={false}
+          navigation
           pagination={{
             clickable: true,
           }}
-          modules={[Mousewheel, Pagination]}
+          modules={[Mousewheel, Pagination, Navigation]}
           className="mySwiper"
         >
           {projects?.map((project, i) => (
             <SwiperSlide>
               <div
                 key={project?._id}
-                className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20"
+                className=" flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20"
               >
                 <img
                   src={urlFor(project?.image).url()}
                   alt="project image"
-                  className="w-60"
+                  className="w-36 xl:w-60"
                 />
                 {/* bug ici l'image n'apparaît pas */}
                 <div className="space-y-10 px-0 md:px-10 max-w-6xl">
@@ -51,7 +52,7 @@ export default function Projects({ projects }: Props) {
                     </span>{" "}
                     {project?.title}
                   </h4>
-                  <div className="flex  flex-row items-center space-x-2 justify-center p-6 gap-4">
+                  <div className="flex  flex-row items-center space-x-3 justify-center p-6 ">
                     {project?.technologies.map((technology) => (
                       <Image
                         width={300}
@@ -64,7 +65,7 @@ export default function Projects({ projects }: Props) {
                     ))}
                   </div>
 
-                  <p className="text-xl text-center ">{project?.summary}</p>
+                  <p className=" text-center ">{project?.summary}</p>
                 </div>
                 <a
                   href={project.linkToBuild}

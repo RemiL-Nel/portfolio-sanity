@@ -19,7 +19,7 @@ export default function Skill({ skill }: Props) {
       <h5 className="font-semibold text-center">{skill.title}</h5>
       <img
         src={urlFor(skill?.image).url()}
-        className="rounded-full border border-gray-500 object-contain w-24 h-24 xl:w-32 xl:h-32"
+        className="rounded-full border border-gray-500 object-contain w-16 h-16 xl:w-32 xl:h-32"
       />
     </motion.div>
   );

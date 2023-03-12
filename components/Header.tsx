@@ -34,7 +34,14 @@ export default function Header({ socials }: Props) {
             bgColor="transparent"
           />
         ))}
-      </motion.div>
+      </motion.div>{" "}
+      <div>
+        <Link href="./myUniverse">
+          <p className="uppercase text-center hidden md:inline-flex text-xl cursor-pointer underline decoration-[#61DBFB] animate-pulse">
+            {"-> Découvrir mon Univers -<"}
+          </p>
+        </Link>
+      </div>
       <motion.div
         initial={{
           x: 500,
@@ -57,6 +64,7 @@ export default function Header({ socials }: Props) {
           fgColor="gray"
           bgColor="transparent"
         />
+
         <Link href="#contact">
           <p className="uppercase hidden md:inline-flex text-sm text-gray-400 cursor-pointer">
             Me contacter

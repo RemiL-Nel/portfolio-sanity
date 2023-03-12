@@ -2,12 +2,56 @@
 @tailwind components;
 @tailwind utilities;
  @import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/scrollbar';
+@import "swiper/css/effect-coverflow";
 @layer components {
     .heroButton {
         @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-sm tracking-widest text-gray-500 transition-all hover:border-[#61DBFB]/40 hover:text-[#61DBFB]/40
     }
     .contactInput {
-        @apply outline-none bg-slate-400/10 rounded-sm border-b px-6 py-4 border-[242424] text-gray-500 placeholder-gray-500 transition-all focus:border-[#61DBFB]/40 focus:text-[#61DBFB]/40
+        @apply  w-72 md:w-[100%] outline-none bg-slate-400/10 rounded-sm border-b px-6 py-4 border-[242424] text-gray-500 placeholder-gray-500 transition-all focus:border-[#61DBFB]/40 focus:text-[#61DBFB]/40
     }
 }
 
+.swiper-pagination-bullet-active {
+    background-color: #61DBFB !important;
+  }
+  .swiper-pagination-bullet {
+    background-color: #61DBFB !important;
+    display: inline-flex !important;
+    align-items: center; 
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+  .swiper-pagination{
+    bottom: 0 !important;
+  }
+  .swiper-button-prev, .swiper-button-next{
+    color: #61DBFB !important;
+  }
+  /* .swiper{
+    width: 100% !important;
+    height: 470px !important;
+  }
+  .swiper-wrapper {
+    align-items: center !important;
+  }
+  
+  .swiper-slide{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-position: center !important;
+    background-size: cover !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    /* height: 480px !important; */
+  /* } */
+  /* .swiper-slide img {
+    display: flex !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+   
+  }  */

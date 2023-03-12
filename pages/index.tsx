@@ -22,28 +22,28 @@ interface Props {
 const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
   console.log(experiences);
   return (
-    <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#61DBFB]/50 ">
+    <div className="bg-[rgb(36,36,36)] scroll-smooth flex flex-col gap-y-12 text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#61DBFB]/50 ">
       <Head>
         <title>Portfolio de {pageInfo?.name}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header socials={socials} />
-      <section id="hero" className="snap-start">
+      <section id="hero">
         <Hero pageInfo={pageInfo} />
       </section>
-      <section id="about" className="snap-center">
+      <section id="about">
         <About pageInfo={pageInfo} />
       </section>
-      <section id="experience" className="snap-center">
+      <section id="experience">
         <ExperienceComponent experiences={experiences} />
       </section>
-      <section id="skills" className="snap-start">
+      <section id="skills">
         <Skills skills={skills} />
       </section>
-      <section id="projects" className="snap-center">
+      <section id="projects">
         <Projects projects={projects} />
       </section>
-      <section id="contact" className="snap-start">
+      <section id="contact">
         <Contact />
       </section>
     </div>
