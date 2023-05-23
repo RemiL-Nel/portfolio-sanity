@@ -19,7 +19,7 @@ interface Props {
   socials: Social[];
 }
 
-const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
+const Home = ({ pageInfo, experiences, projects, skills }: Props) => {
   console.log(experiences);
   return (
     <div className="bg-[rgb(36,36,36)] scroll-smooth flex flex-col gap-y-12 text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#61DBFB]/50 ">

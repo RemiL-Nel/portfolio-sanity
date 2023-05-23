@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import React from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 import { PageInfo, Social } from "../typings";
@@ -154,7 +155,7 @@ export default function Header({ socials, pageInfo }: Props) {
         }}
         className="lg:flex flex-row items-center md:hidden"
       >
-        {socials?.map((social) => (
+        {socials?.map((social: Social) => (
           <SocialIcon
             key={social?._id}
             url={social?.url}
@@ -162,14 +163,7 @@ export default function Header({ socials, pageInfo }: Props) {
             bgColor="transparent"
           />
         ))}
-      </motion.div>{" "}
-      <div>
-        <Link href="./myUniverse">
-          <p className="uppercase text-center hidden md:inline-flex text-xl cursor-pointer underline decoration-[#61DBFB] animate-pulse">
-            {"-> Découvrir mon Univers -<"}
-          </p>
-        </Link>
-      </div>
+      </motion.div>
       <motion.div
         initial={{
           x: 500,
