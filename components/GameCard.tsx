@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 type Props = {};
@@ -20,12 +21,14 @@ export default function GameCard({}: Props) {
               Curabitur luctus erat nunc, sed ullamcorper erat vestibulum eget.
             </p>
           </div>
-          <button
-            type="button"
-            className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900"
-          >
-            Read more
-          </button>
+          <Link href="/content">
+            <button
+              type="button"
+              className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900"
+            >
+              Read more
+            </button>
+          </Link>
         </div>
       </div>
     </div>

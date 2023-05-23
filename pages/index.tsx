@@ -27,7 +27,7 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
         <title>Portfolio de {pageInfo?.name}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header socials={socials} />
+      <Header socials={socials} pageInfo={pageInfo} />
       <section id="hero">
         <Hero pageInfo={pageInfo} />
       </section>
