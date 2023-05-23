@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 import { Social } from "../typings";
@@ -7,9 +8,30 @@ type Props = {
   socials: Social[];
 };
 
-export default function Header({ socials }: Props) {
+export default function Header() {
+  const [socials, setSocials] = useState<any>(null);
+
+  useEffect(() => {
+    fetch("/api/fetchSocials", {
+      method: "GET",
+      // headers: { 'Content-Type': 'application/json' },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          res.json().then((result) => {
+            setSocials(result.socials);
+          });
+        } else if (res.status === 401) {
+        }
+      })
+
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  console.log(socials);
   return (
-    <header className="sticky top-0 flex items-start justify-between z-20 px-6 py-3 ">
+    <header className="bg-transparent text-white   fixed top-0 left-0 w-full flex items-start justify-between z-20 px-6 py-3 ">
       <motion.div
         initial={{
           x: -500,
@@ -26,7 +48,7 @@ export default function Header({ socials }: Props) {
         }}
         className="flex flex-row items-center"
       >
-        {socials?.map((social) => (
+        {socials?.map((social: Social) => (
           <SocialIcon
             key={social?._id}
             url={social?.url}
@@ -34,14 +56,7 @@ export default function Header({ socials }: Props) {
             bgColor="transparent"
           />
         ))}
-      </motion.div>{" "}
-      <div>
-        <Link href="./myUniverse">
-          <p className="uppercase text-center hidden md:inline-flex text-xl cursor-pointer underline decoration-[#61DBFB] animate-pulse">
-            {"-> Découvrir mon Univers -<"}
-          </p>
-        </Link>
-      </div>
+      </motion.div>
       <motion.div
         initial={{
           x: 500,
