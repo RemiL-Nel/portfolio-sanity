@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Navigation, Pagination } from "swiper";
 import "swiper/css/pagination";
+import Link from "next/link";
 type Props = {
   projects: Project[];
 };
@@ -67,12 +68,11 @@ export default function Projects({ projects }: Props) {
 
                   <p className=" text-center ">{project?.summary}</p>
                 </div>
-                <a
-                  href={project.linkToBuild}
-                  className=" w-60 text-center text-2xl border border-t-[#61DBFB] border-x-0 border-b-0 underline decoration-[#61DBFB]/80"
-                >
-                  Visiter
-                </a>
+                <Link href={`/project/${project?.slug?.current}`}>
+                  <button className=" w-60 text-center text-2xl border border-t-[#61DBFB] border-x-0 border-b-0 underline decoration-[#61DBFB]/80">
+                    Visiter
+                  </button>
+                </Link>
               </div>
             </SwiperSlide>
           ))}

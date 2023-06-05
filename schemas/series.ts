@@ -38,5 +38,10 @@ export default defineType({
       title: "Avis",
       type: "string",
     }),
+    defineField({
+      name: "note",
+      title: "Note",
+      type: "string",
+    }),
   ],
 });

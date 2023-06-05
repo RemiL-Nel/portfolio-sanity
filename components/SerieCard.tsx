@@ -24,7 +24,7 @@ export default function SerieCard({ serie }: Props) {
             </h2>
             <p className="dark:text-gray-100">{serie.description}</p>
           </div>
-          <Link href={`/series/${serie.slug.current}`}>
+          <Link href={`/series/${serie?.slug?.current}`}>
             <button
               type="button"
               className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900"
