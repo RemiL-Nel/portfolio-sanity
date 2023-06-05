@@ -33,6 +33,7 @@ export interface Series extends SanityBody {
   description: string;
   image: Image;
   avis: string;
+  note: string;
 }
 
 export interface Technology extends SanityBody {
@@ -62,6 +63,7 @@ export interface Experience extends SanityBody {
 
 export interface Project extends SanityBody {
   title: string;
+  slug: Slug;
   _type: "project";
   image: Image;
   linkToBuild: string;
