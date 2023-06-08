@@ -14,7 +14,7 @@ type Props = {
 export default function Header({ socials, pageInfo }: Props) {
   const [openDrawer, setOpenDrawer] = useState(false);
   return (
-    <header className="sticky top-0 flex items-start justify-between z-20 px-6 py-3 ">
+    <header className="sticky top-0 flex items-start justify-between z-20 px-6 py-3 bg-[rgb(36,36,36)]">
       <>
         <Bars3Icon
           onClick={() => setOpenDrawer(true)}
@@ -29,11 +29,11 @@ export default function Header({ socials, pageInfo }: Props) {
           <nav className="flex flex-col justify-center space-y-4 text-right mr-4">
             <div className="h-full w-full p-3 space-y-2 dark:bg-gray-900 dark:text-gray-100">
               <div className="flex items-center p-2 space-x-4">
-                <img
+                {/* <img
                   src={urlFor(pageInfo?.heroImage).url()}
                   alt=""
                   className="w-12 h-12 object-cover rounded-full dark:bg-gray-500"
-                />
+                /> */}
                 <div>
                   <h2 className="text-lg font-semibold">Lagreze Rémi</h2>
                   <span className="flex items-center space-x-1">

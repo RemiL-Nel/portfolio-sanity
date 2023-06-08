@@ -1,10 +1,13 @@
 import Head from "next/head";
 import React from "react";
+import { PageInfo, Social } from "../typings";
 import Header from "./Header";
+type Props = {
+  socials: Social[];
+  pageInfo: PageInfo;
+};
 
-type Props = {};
-
-export default function Layout({}: Props) {
+export default function Layout({ socials, pageInfo }: Props) {
   return (
     <>
       <Head>
